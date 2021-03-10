@@ -535,6 +535,12 @@ int vc_query(VC vc, Expr e)
   return vc_query_with_timeout(vc, e, -1, -1);
 }
 
+int vc_query_socket(VC vc, Expr e, bool use_Tseitin){
+  stp::STP* stp_i = (stp::STP*)vc;
+  stp_i->bm->UserFlags.simple_cnf = use_Tseitin;
+  return vc_query_with_timeout(vc, e, -1, -1);
+}
+
 int vc_query_with_timeout(VC vc, Expr e, int timeout_max_conflicts, int timeout_max_time)
 {
   stp::STP* stp_i = (stp::STP*)vc;

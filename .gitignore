@@ -9,3 +9,5 @@ docs/_build
 .DS_Store
 .direnv
 build
+cmake-build-debug
+.idea

@@ -49,7 +49,8 @@ long RunTimes::getCurrentTime()
 {
   timeval t;
   gettimeofday(&t, NULL);
-  return (1000 * t.tv_sec) + (t.tv_usec / 1000);
+//  return (1000 * t.tv_sec) + (t.tv_usec / 1000);
+  return  (1000 * 1000 * t.tv_sec) + t.tv_usec;
 }
 
 void RunTimes::print()
@@ -90,7 +91,9 @@ void RunTimes::print()
 
   std::cerr << std::fixed;
   std::cerr.precision(2);
-  std::cerr << "Statistics Total: " << ((double)cummulative_ms) / 1000 << "s"
+//  std::cerr << "Statistics Total: " << ((double)cummulative_ms) / 1000 << "s"
+//            << std::endl;
+  std::cerr << "Statistics Total: " << ((double)cummulative_ms)  << "us"
             << std::endl;
   std::cerr << "CPU Time Used   : " << Minisat::cpuTime() << "s" << std::endl;
   std::cerr << "Peak Memory Used: " << Minisat::memUsed() / (1024.0 * 1024.0)

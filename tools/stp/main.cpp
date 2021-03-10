@@ -148,7 +148,9 @@ void ExtraMain::create_options()
   // Declare the supported options.
   po::options_description general_options("Most important options");
   general_options.add_options()("help,h", "print this help")(
-      "version", "print version number");
+      "version", "print version number")(
+      "use_Tseitin","use Tseitin transformation"
+      );
 
   po::options_description simplification_options("Simplifications");
   simplification_options.add_options()("disable-simplifications",
@@ -292,6 +294,11 @@ int ExtraMain::parse_options(int argc, char** argv)
   po::variables_map vm;
   try_parsing_options(argc, argv, vm, pos_options);
   onePrintBack = bm->UserFlags.get_print_output_at_all();
+
+  if (vm.count("use_Tseitin"))
+  {
+    bm->UserFlags.simple_cnf = true;
+  }
 
   if (vm.count("disable-opt-inc"))
   {

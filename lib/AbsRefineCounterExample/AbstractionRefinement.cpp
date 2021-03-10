@@ -361,9 +361,11 @@ AbsRefine_CounterExample::SATBased_ArrayReadRefinement(
         AxiomToBe o(index_symbols[i], index_symbols[j], read_node_symbols[i],
                     read_node_symbols[j]);
 
-        if (concreteIndexes[i] == concreteIndexes[j] &&
+        if ( /* 抽象精化打开 */
+            concreteIndexes[i] == concreteIndexes[j] &&
             concreteValues[i] != concreteValues[j])
         {
+
           FalseAxiomsVec.push_back(o);
           // ToSATBase::ASTNodeToSATVar	& satVar =
           // tosat->SATVar_to_SymbolIndexMap();

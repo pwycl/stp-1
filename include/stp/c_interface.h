@@ -498,6 +498,8 @@ DLL_PUBLIC int vc_query_with_timeout(VC vc, Expr e, int timeout_max_conflicts, i
 //!
 DLL_PUBLIC int vc_query(VC vc, Expr e);
 
+DLL_PUBLIC int vc_query_socket(VC vc, Expr e, bool use_Tseitin);
+
 //! \brief Returns the counter example after an invalid query.
 //!
 DLL_PUBLIC Expr vc_getCounterExample(VC vc, Expr e);

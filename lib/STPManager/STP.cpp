@@ -309,7 +309,7 @@ STP::TopLevelSTPAux(SATSolver& NewSolver, const ASTNode& original_input)
   // TODO: I chose the number of reads we perform this operation at randomly.
   bool removed = false;
   if ((bm->UserFlags.ackermannisation &&
-       numberOfReadsLessThan(inputToSat, 50)) ||
+       numberOfReadsLessThan(inputToSat, 50 * 1e6)) ||
       numberOfReadsLessThan(inputToSat, 10))
   {
     // If the number of axioms that would be added it small. Remove them.
